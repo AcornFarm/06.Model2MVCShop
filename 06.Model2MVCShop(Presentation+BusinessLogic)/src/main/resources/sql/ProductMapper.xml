@@ -58,10 +58,10 @@
 											WHERE p.prod_no = t.prod_no(+)
 											<if test="searchCondition != null">
 													<if test="searchCondition == 0 and searchKeyword !='' ">
-										 				AND p.prod_no = #{searchKeyword}
+										 				AND p.prod_no LIKE '%'||#{searchKeyword}||'%'
 													</if>
 													<if test="searchCondition == 1 and searchKeyword !='' ">
-										 				AND p.prod_name = #{searchKeyword}
+										 				AND p.prod_name LIKE '%'||#{searchKeyword}||'%'
 													</if>
 											</if>
 											  
@@ -107,10 +107,10 @@
 						<if test="searchCondition != null">
 							
 								<if test="searchCondition == 0 and searchKeyword !='' ">
-						 			AND p.prod_no = #{searchKeyword}
+						 			AND p.prod_no LIKE '%'||#{searchKeyword}||'%'
 								</if>
 								<if test="searchCondition == 1 and searchKeyword !='' ">
-						 			AND p.prod_name = #{searchKeyword}
+						 			AND p.prod_name LIKE '%'||#{searchKeyword}||'%'
 								</if>
 							
 						</if> 
