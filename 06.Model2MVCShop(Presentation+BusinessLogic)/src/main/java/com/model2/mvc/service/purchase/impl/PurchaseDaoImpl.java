@@ -37,9 +37,9 @@ public class PurchaseDaoImpl implements PurchaseDao {
 	}
 
 	@Override
-	public Purchase findPurchase(int tranNo) throws Exception {
+	public Purchase findPurchase(int prodNo) throws Exception {
 		// TODO Auto-generated method stub
-		Purchase purchase = sqlSession.selectOne("PurchaseMapper.getPurchase", tranNo);
+		Purchase purchase = sqlSession.selectOne("PurchaseMapper.getPurchase", prodNo);
 		return purchase;
 	}
 

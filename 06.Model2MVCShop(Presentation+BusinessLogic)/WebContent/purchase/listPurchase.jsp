@@ -107,7 +107,7 @@
 		배송준비중
 		</c:if>
 		<c:if test="${fn:contains(puvo.tranCode, '2')}">
-		<a href="/updateTranCode.do?tranNo=${puvo.tranNo}&tranCode=3">물품도착</a>	
+		<a href="/updateTranCode.do?prodNo=${puvo.purchaseProd.prodNo}&tranCode=3">물품도착</a>	
 		</c:if>
 
 			

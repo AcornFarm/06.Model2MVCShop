@@ -22,7 +22,7 @@
 	<insert 	id="addProduct"		parameterType="product" >
 	 	INSERT
 		INTO product( prod_no , prod_name , prod_detail , manufacture_day , price, image_file, reg_date) 
-		VALUES	 (	seq_product_tran_no.nextval , #{prodName:VARCHAR} , #{prodDetail:VARCHAR} , #{manuDate:VARCHAR} , #{price:NUMERIC} , 
+		VALUES	 (	seq_product_prod_no.nextval , #{prodName:VARCHAR} , #{prodDetail:VARCHAR} , #{manuDate:VARCHAR} , #{price:NUMERIC} , 
 							#{fileName:VARCHAR} , SYSDATE )
 
 	 </insert>

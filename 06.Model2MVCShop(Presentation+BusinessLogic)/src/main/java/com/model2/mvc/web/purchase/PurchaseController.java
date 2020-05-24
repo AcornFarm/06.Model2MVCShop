@@ -94,9 +94,11 @@ public class PurchaseController {
 	  
 	  System.out.println("::"+purchase);
 	  
-	  Purchase puvo = purchaseService.getPurchase(purchase.getTranNo());
+	  Purchase puvo = purchaseService.getPurchase(prodNo);
 	  
-	  return new ModelAndView("forward:/product/addProduct.jsp", "puvo", puvo); 
+	  System.out.println("::::"+puvo);
+	  
+	  return new ModelAndView("forward:/purchase/addPurchase.jsp", "purchase", puvo); s
 	  
 	  }
 	 
@@ -106,11 +108,12 @@ public class PurchaseController {
 	  public ModelAndView getPurchase( @RequestParam("tranNo") int tranNo ) throws Exception {
 	  
 	  System.out.println("/getPurchase.do"); //Business Logic Product product =
+	  System.out.println(tranNo);
 	  
 	  Purchase purchase = purchaseService.getPurchase(tranNo);
 	  String viewName="forward:/purchase/getPurchase.jsp";
 	  
-	  return new ModelAndView(viewName, "puvo", purchase); 
+	  return new ModelAndView(viewName, "purchase", purchase); 
 	  
 	  }
 	  
@@ -122,7 +125,7 @@ public class PurchaseController {
 	  System.out.println("/updatePurchaseView.do"); //Business Logic Product product
 	  Purchase purchase = purchaseService.getPurchase(tranNo); // Model °ú View ¿¬°á
 	  
-	  return  new ModelAndView("forward:/purchase/updatePurchaseView.jsp", "puvo", purchase);
+	  return  new ModelAndView("forward:/purchase/updatePurchaseView.jsp", "purchase", purchase);
 	  
 	  }
 	  
@@ -141,10 +144,40 @@ public class PurchaseController {
 	  purchaseService.updatePurcahse(purchase);
 	  Purchase puvo = purchaseService.getPurchase(purchase.getTranNo());
 	  
-	  return new ModelAndView("forward:/purchase/getPurchase.jsp", "puvo", puvo); 
+	  return new ModelAndView("forward:/purchase/getPurchase.jsp", "purchase", puvo); 
 	  
 	  }
+	  
+	  @RequestMapping("/updateTranCode.do") 
+	  public ModelAndView updateTranCode( @RequestParam("prodNo") int prodNo, @RequestParam("tranCode") String tranCode, HttpSession session
+			  													) throws Exception{
+	  
+	  System.out.println("/updateTranCode.do"); //Business Logic
+	  
+	  System.out.println(prodNo+"::::"+tranCode);
+	  
+	  Product product = new Product();
+	  product.setProdNo(prodNo);
+	  Purchase purchase = new Purchase();
+	  purchase.setPurchaseProd(product);
+	  purchase.setTranCode(tranCode);
+	  
+	  System.out.println(":::::"+purchase);
 	 
+	  purchaseService.updateTranCode(purchase);
+	  
+	  ModelAndView modelAndView = new ModelAndView();
+	  User user = (User)session.getAttribute("user");
+	  
+	  if(user.getRole().contains("user")) {
+		  modelAndView.setViewName("forward:/listPurchase.do");
+	  }else {
+		  modelAndView.setViewName("forward:/listProduct.do");
+	  }
+	  
+	  return modelAndView;
+	  
+	  }
 	  
 	  
 	

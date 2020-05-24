@@ -47,7 +47,7 @@
 					<td width="105">
 
 
-							${puvo.purchaseProd.prodNo}<td>
+							${purchase.purchaseProd.prodNo}<td>
 
 
 					<td></td>
@@ -63,7 +63,7 @@
 			구매자아이디 <img	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${puvo.buyer.userId}</td>
+		<td class="ct_write01">${purchase.buyer.userId}</td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -73,8 +73,8 @@
 		<td width="104" class="ct_write">구매방법</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<c:if test="${!empty puvo.paymentOption}">
-				${ fn:contains(puvo.paymentOption, '1')? '현금구매' : '신용카드' }
+			<c:if test="${!empty purchase.paymentOption}">
+				${ fn:contains(purchase.paymentOption, '1')? '현금구매' : '신용카드' }
 			</c:if>
 		</td>
 	</tr>
@@ -84,7 +84,7 @@
 	<tr>
 		<td width="104" class="ct_write">구매자이름</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${puvo.receiverName}</td>
+		<td class="ct_write01">${purchase.receiverName}</td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -92,7 +92,7 @@
 	<tr>
 		<td width="104" class="ct_write">구매자연락처</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${puvo.receiverPhone}</td>
+		<td class="ct_write01">${purchase.receiverPhone}</td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -100,7 +100,7 @@
 	<tr>
 		<td width="104" class="ct_write">구매자주소</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${puvo.divyAddr}</td>
+		<td class="ct_write01">${purchase.divyAddr}</td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -108,7 +108,7 @@
 	<tr>
 		<td width="104" class="ct_write">구매요청사항</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${puvo.divyRequest}</td>
+		<td class="ct_write01">${purchase.divyRequest}</td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -116,7 +116,7 @@
 	<tr>
 		<td width="104" class="ct_write">배송희망일</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${puvo.divyDate}</td>
+		<td class="ct_write01">${purchase.divyDate}</td>
 	</tr>
 
 	<tr>
@@ -126,7 +126,7 @@
 	<tr>
 		<td width="104" class="ct_write">주문일</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${puvo.orderDate}</td>
+		<td class="ct_write01">${purchase.orderDate}</td>
 	</tr>
 
 	<tr>
@@ -145,7 +145,7 @@
 						<img src="/images/ct_btnbg01.gif" width="17" height="23"/>
 					</td>
 					<td background="/images/ct_btnbg02.gif" class="ct_btn01"	style="padding-top: 3px;">
-						<a href="/updatePurchaseView.do?tranNo=${puvo.tranNo}">수정</a>
+						<a href="/updatePurchaseView.do?tranNo=${purchase.tranNo}">수정</a>
 					</td>
 					<td width="14" height="23">
 						<img src="/images/ct_btnbg03.gif" width="14" height="23"/>

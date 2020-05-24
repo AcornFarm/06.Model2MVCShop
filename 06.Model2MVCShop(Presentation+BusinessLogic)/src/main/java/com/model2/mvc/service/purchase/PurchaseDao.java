@@ -9,7 +9,7 @@ public interface PurchaseDao {
 	
 	public void insertPurchase(Purchase purchase) throws Exception;
 	
-	public Purchase findPurchase(int tranNo) throws Exception;
+	public Purchase findPurchase(int prodNo) throws Exception;
 	
 	public List<Purchase> getPurchaseList(Search search, String buyerId) throws Exception;
 	

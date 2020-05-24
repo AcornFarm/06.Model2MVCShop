@@ -22,6 +22,7 @@
 
 <body bgcolor="#ffffff" text="#000000">
 
+<input type="hidden" id="tranNo" name="tranNo" value="${param.tranNo}"/>
 <form name="updatePurchase" method="post"	action="/updatePurchase.do?tranNo=${param.tranNo}">
 
 <table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
@@ -50,8 +51,8 @@
 	<tr>
 		<td width="104" class="ct_write">구매자아이디</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${puvo.buyer.userId}</td>
-		<input type="hidden" name="buyerId" value="${puvo.buyer.userId }">
+		<td class="ct_write01">${purchase.buyer.userId}</td>
+		<input type="hidden" name="buyerId" value="${purchase.buyer.userId }">
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
@@ -62,8 +63,8 @@
 		<td class="ct_write01">
 			<select 	name="paymentOption" 	class="ct_input_g" style="width: 100px; height: 19px" 
 							maxLength="20">
-				<option value="1" ${fn:contains(puvo.paymentOption, '1')? "selected" : "" }>현금구매</option>
-				<option value="2" ${fn:contains(puvo.paymentOption, '2')? "selected" : "" }>신용구매</option>
+				<option value="1" ${fn:contains(purchase.paymentOption, '1')? "selected" : "" }>현금구매</option>
+				<option value="2" ${fn:contains(purchase.paymentOption, '2')? "selected" : "" }>신용구매</option>
 			</select>
 		</td>
 	</tr>
@@ -75,7 +76,7 @@
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<input 	type="text" name="receiverName" 	class="ct_input_g" style="width: 100px; height: 19px" 
-							maxLength="20" value="${puvo.receiverName }" />
+							maxLength="20" value="${purchase.receiverName }" />
 		</td>
 	</tr>
 	<tr>
@@ -86,7 +87,7 @@
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
 			<input 	type="text" name="receiverPhone" class="ct_input_g" style="width: 100px; height: 19px" 
-							maxLength="20" value="${!empty puvo.receiverPhone? puvo.receiverPhone : '' }" />
+							maxLength="20" value="${!empty purchase.receiverPhone? purchase.receiverPhone : '' }" />
 		</td>
 	</tr>
 
@@ -97,8 +98,8 @@
 		<td width="104" class="ct_write">구매자주소</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input 	type="text" name="receiverAddr" class="ct_input_g" style="width: 100px; height: 19px" 
-							maxLength="20" value="${puvo.divyAddr }" />
+			<input 	type="text" name="divyAddr" class="ct_input_g" style="width: 100px; height: 19px" 
+							maxLength="20" value="${purchase.divyAddr }" />
 		</td>
 	</tr>
 	<tr>
@@ -108,8 +109,8 @@
 		<td width="104" class="ct_write">구매요청사항</td>
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">
-			<input 	type="text" name="receiverRequest" 	class="ct_input_g" style="width: 100px; height: 19px" 
-							maxLength="20" value="${puvo.divyRequest }" />
+			<input 	type="text" name="divyRequest" 	class="ct_input_g" style="width: 100px; height: 19px" 
+							maxLength="20" value="${purchase.divyRequest }" />
 		</td>
 	</tr>
 	<tr>
@@ -120,7 +121,7 @@
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td width="200" class="ct_write01">
 			<input type="text" readonly="readonly" name="divyDate" class="ct_input_g" 
-						style="width: 100px; height: 19px" maxLength="20"/>
+						style="width: 100px; height: 19px" maxLength="20" />
 				<img 	src="../images/ct_icon_date.gif" width="15" height="15"	
 							onclick="show_calendar('document.updatePurchase.divyDate', document.updatePurchase.divyDate.value)"/>
 		</td>
