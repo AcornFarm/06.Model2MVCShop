@@ -94,11 +94,11 @@ public class PurchaseController {
 	  
 	  System.out.println("::"+purchase);
 	  
-	  Purchase puvo = purchaseService.getPurchase(prodNo);
+	  Purchase puvo = purchaseService.getPurchase2(prodNo);
 	  
 	  System.out.println("::::"+puvo);
 	  
-	  return new ModelAndView("forward:/purchase/addPurchase.jsp", "purchase", puvo); s
+	  return new ModelAndView("forward:/purchase/addPurchase.jsp", "purchase", puvo); 
 	  
 	  }
 	 
@@ -111,6 +111,7 @@ public class PurchaseController {
 	  System.out.println(tranNo);
 	  
 	  Purchase purchase = purchaseService.getPurchase(tranNo);
+	  System.out.println(purchase);
 	  String viewName="forward:/purchase/getPurchase.jsp";
 	  
 	  return new ModelAndView(viewName, "purchase", purchase); 
@@ -141,12 +142,13 @@ public class PurchaseController {
 	  purchase.setBuyer(user);
 	  System.out.println(":::::"+purchase);
 	 
-	  purchaseService.updatePurcahse(purchase);
+	  purchaseService.updatePurchase(purchase);
 	  Purchase puvo = purchaseService.getPurchase(purchase.getTranNo());
 	  
 	  return new ModelAndView("forward:/purchase/getPurchase.jsp", "purchase", puvo); 
 	  
 	  }
+	  
 	  
 	  @RequestMapping("/updateTranCode.do") 
 	  public ModelAndView updateTranCode( @RequestParam("prodNo") int prodNo, @RequestParam("tranCode") String tranCode, HttpSession session

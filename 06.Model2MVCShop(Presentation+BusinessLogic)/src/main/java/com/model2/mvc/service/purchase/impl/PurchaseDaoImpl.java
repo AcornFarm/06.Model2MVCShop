@@ -42,6 +42,13 @@ public class PurchaseDaoImpl implements PurchaseDao {
 		Purchase purchase = sqlSession.selectOne("PurchaseMapper.getPurchase", prodNo);
 		return purchase;
 	}
+	
+	public Purchase findPurchase2(int tranNo) throws Exception{
+		
+		Purchase purchase = sqlSession.selectOne("PurchaseMapper.getPurchase2", tranNo);
+		return purchase;
+		
+	}
 
 	@Override
 	public List<Purchase> getPurchaseList(Search search, String buyerId) throws Exception {

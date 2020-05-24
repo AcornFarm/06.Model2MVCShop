@@ -41,18 +41,26 @@
 		WHERE tran_no = #{value}
 	 </select>
 	 
+	  <select 	id="getPurchase2"	parameterType="int"	resultMap="purchaseSelectMap">
+		select
+		tran_no , prod_no , buyer_id , payment_option, receiver_name, receiver_phone, demailaddr,
+		dlvy_Request, tran_status_code, order_data, dlvy_date	
+		FROM transaction
+		WHERE prod_no = #{value}
+	 </select>
+	 
 	 <!-- SQL : UPDATE -->
 	 <update	id="updatePurchase"	parameterType="purchase">
 	   	UPDATE transaction
 	   	<set>
-	   	payment_Option= #{paymentOption:VARCHAR},
-	   	dlvy_request=#{divyRequest:VARCHAR},
+	   	payment_option= #{paymentOption:CHAR},
+	   	dlvy_Request=#{divyRequest:VARCHAR},
 	   	receiver_phone=#{receiverPhone:VARCHAR},
 	   	demailaddr=#{divyAddr:VARCHAR}, 
-	   	receiver_name=#{receiverName:VARCHAR}
+	   	receiver_name=#{receiverName:VARCHAR},
 	   	dlvy_date=#{divyDate:DATE}
 	   	</set>
-	   	WHERE tran_no = #{tranNo}
+	   	WHERE tran_no = #{tranNo:INTEGER}
 	 </update>
 	
 	 <update	id="updateTranCode"	parameterType="purchase" >

@@ -22,7 +22,6 @@
 
 <body bgcolor="#ffffff" text="#000000">
 
-<input type="hidden" id="tranNo" name="tranNo" value="${param.tranNo}"/>
 <form name="updatePurchase" method="post"	action="/updatePurchase.do?tranNo=${param.tranNo}">
 
 <table width="100%" height="37" border="0" cellpadding="0" cellspacing="0">
