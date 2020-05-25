@@ -49,7 +49,7 @@ function fncAddProduct(){
 
 <body bgcolor="#ffffff" text="#000000">
 
-<form name="detailForm" method="post">
+<form name="detailForm" method="post" >
 
 <input type="hidden" name="prodNo" value="${pvo.prodNo}"/>
 
