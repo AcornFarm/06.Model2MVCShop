@@ -20,9 +20,18 @@ public class User {
 	private String phone1;
 	private String phone2;
 	private String phone3;
+	private int points;
 
 	
 	
+	public int getPoints() {
+		return points;
+	}
+
+	public void setPoints(int points, int addpoints) {
+		this.points = points+addpoints;
+	}
+
 	///Constructor
 	public User(){
 	}

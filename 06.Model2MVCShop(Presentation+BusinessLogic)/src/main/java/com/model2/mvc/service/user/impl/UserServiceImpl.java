@@ -54,6 +54,12 @@ public class UserServiceImpl implements UserService{
 	public void updateUser(User user) throws Exception {
 		userDao.updateUser(user);
 	}
+	
+	public void updatePoints(User user) throws Exception{
+		
+		userDao.updatePoints(user);
+		
+	}
 
 	public boolean checkDuplication(String userId) throws Exception {
 		boolean result=true;

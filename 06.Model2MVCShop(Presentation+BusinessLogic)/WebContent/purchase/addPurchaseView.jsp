@@ -14,12 +14,15 @@
 <script type="text/javascript" src="../javascript/calendar.js">
 </script>
 
+
 <script type="text/javascript">
 <!--
 function fncAddPurchase() {
 	document.addPurchase.submit();
 }
 -->
+
+
 </script>
 </head>
 
@@ -99,7 +102,10 @@ function fncAddPurchase() {
 	<tr>
 		<td width="104" class="ct_write">가격</td>
 		<td bgcolor="D6D6D6" width="1"></td>
-		<td class="ct_write01">${pvo.price}</td>
+		<td class="ct_write01">${pvo.price} 원
+		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<input style="width: 50px; height: 19px" type="text" id="points" max="${uvo.points}"/> P (${uvo.points} P 사용가능)
+		</td>
 	</tr>
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
