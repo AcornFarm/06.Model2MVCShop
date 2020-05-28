@@ -14,6 +14,40 @@
 <script type="text/javascript" src="../javascript/calendar.js">
 </script>
 
+   <script
+  src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  	
+  	$(function(){
+  		
+  		var points = ${uvo.points};
+  		var price = ${pvo.price};
+  		var amount;
+  		
+  		$("#points").bind('keyup', function(){
+  			
+  			if($(this).val()> points){
+  				
+  				$(this).val('');
+  				alert(${uvo.points}+"p이상 사용할 수 없습니다.");
+  			}
+  			
+  			amount = price - points;
+  			
+  			$("input[name=price]").val(amount);
+ 			
+ 
+  		});
+  		
+  		
+  		
+  	});
+  	
+  
+  </script>
 
 <script type="text/javascript">
 <!--
@@ -25,6 +59,8 @@ function fncAddPurchase() {
 
 
 </script>
+
+
 </head>
 
 <body>
@@ -105,7 +141,7 @@ function fncAddPurchase() {
 		<td bgcolor="D6D6D6" width="1"></td>
 		<td class="ct_write01">${pvo.price} 원
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		<input style="width: 50px; height: 19px" type="text" id="points" max="${uvo.points}"/> P (${uvo.points} P 사용가능)
+		<input style="width: 50px; height: 19px" type="text" id="points"/> P (${uvo.points} P 사용가능)
 		</td>
 	</tr>
 	<tr>
@@ -201,6 +237,17 @@ function fncAddPurchase() {
 	<tr>
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
+	<tr>
+		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
+	</tr>
+	<tr>
+		<td width="104" class="ct_write">총 구매가격</td>
+		<td bgcolor="D6D6D6" width="1"></td>
+		<td width="200" class="ct_write01">
+			<input 	name="price" class="ct_input_g" style="width: 100px; height: 19px" maxLength="20"/>  원
+		</td>
+	</tr>
+	
 </table>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" style="margin-top: 10px;">

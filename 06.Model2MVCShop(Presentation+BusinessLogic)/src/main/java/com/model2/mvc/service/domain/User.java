@@ -28,8 +28,8 @@ public class User {
 		return points;
 	}
 
-	public void setPoints(int points, int addpoints) {
-		this.points = points+addpoints;
+	public void setPoints(int points) {
+		this.points = points;
 	}
 
 	///Constructor

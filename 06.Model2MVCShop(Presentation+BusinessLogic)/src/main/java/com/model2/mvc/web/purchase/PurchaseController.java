@@ -26,6 +26,8 @@ import com.model2.mvc.service.domain.Purchase;
 import com.model2.mvc.service.domain.User;
 import com.model2.mvc.service.product.ProductService;
 import com.model2.mvc.service.purchase.PurchaseService;
+import com.model2.mvc.service.user.UserService;
+import com.model2.mvc.service.user.impl.UserServiceImpl;
 
 
 
@@ -42,6 +44,10 @@ public class PurchaseController {
 	@Autowired
 	@Qualifier("productServiceImpl")
 	private ProductService productService;
+	
+	@Autowired
+	@Qualifier("userServiceImpl")
+	private UserService userService;
 		
 	public PurchaseController(){
 		System.out.println(this.getClass());
@@ -77,13 +83,23 @@ public class PurchaseController {
 	
 	
 	  @RequestMapping("/addPurchase.do") 
-	  public ModelAndView addPurchase( @ModelAttribute("purchase") Purchase purchase, @RequestParam("buyerId") String buyerId,
-																					@RequestParam("prodNo") int prodNo) throws Exception{
+	  public ModelAndView addPurchase( @ModelAttribute("purchase") Purchase purchase, 
+			  											@RequestParam("buyerId") String buyerId,
+																		@RequestParam("prodNo") int prodNo, 
+																					@RequestParam(value="points", required=false) int points,
+																						@RequestParam("price") int price) throws Exception{
 	  
 	  System.out.println("/addPurchase.do"); //Business Logic
+	  int point = 0;
 	  
-	  User user = new User();
-	  user.setUserId(buyerId);
+	  User user = userService.getUser(buyerId);
+	  if(points==0) {
+		  point = (user.getPoints())-points+((int)(price*0.1));
+	  }else {
+		 point = (user.getPoints())+((int)(price*0.1));
+	  }
+	  
+	  user.setPoints(point);
 	  
 	  Product product = new Product();
 	  product.setProdNo(prodNo);
