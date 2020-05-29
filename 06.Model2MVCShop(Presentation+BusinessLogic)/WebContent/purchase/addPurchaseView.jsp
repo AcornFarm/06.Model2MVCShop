@@ -24,6 +24,7 @@
   	$(function(){
   		
   		var points = ${uvo.points};
+  		var point = $('#points').keyup().val();
   		var price = ${pvo.price};
   		var amount;
   		
@@ -35,7 +36,7 @@
   				alert(${uvo.points}+"p이상 사용할 수 없습니다.");
   			}
   			
-  			amount = price - points;
+  			amount = price - point;
   			
   			$("input[name=price]").val(amount);
  			
@@ -241,11 +242,11 @@ function fncAddPurchase() {
 		<td height="1" colspan="3" bgcolor="D6D6D6"></td>
 	</tr>
 	<tr>
-		<td width="104" class="ct_write">총 구매가격</td>
-		<td bgcolor="D6D6D6" width="1"></td>
-		<td width="200" class="ct_write01">
-			<input 	name="price" class="ct_input_g" style="width: 100px; height: 19px" maxLength="20"/>  원
+		<td width="104" class="ct_write">
+			총 구매가격 <img 	src="/images/ct_icon_red.gif" width="3" height="3" align="absmiddle"/>
 		</td>
+		<td bgcolor="D6D6D6" width="1"></td>
+		<td class="ct_write01" name="price"></td>
 	</tr>
 	
 </table>

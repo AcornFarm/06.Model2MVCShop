@@ -150,7 +150,7 @@ public class PurchaseController {
 	  @RequestMapping("/updatePurchase.do") 
 	  public ModelAndView updatePurchase( @ModelAttribute("purchase") Purchase purchase , @RequestParam("buyerId") String buyerId
 			  													) throws Exception{
-	  
+	   
 	  System.out.println("/updatePurchase.do"); //Business Logic
 	  User user = new User();
 	  user.setUserId(buyerId);
