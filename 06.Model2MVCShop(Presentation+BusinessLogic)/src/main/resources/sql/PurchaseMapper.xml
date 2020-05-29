@@ -27,7 +27,7 @@
 	 	INSERT
 		INTO transaction ( tran_no , prod_no , buyer_id , payment_option , receiver_name, receiver_phone, demailaddr,
 		dlvy_Request, tran_status_code, order_data, dlvy_date ) 
-		VALUES	 (	seq_tran_no.nextval , #{purchaseProd.prodNo} , #{buyer.userId} , #{paymentOption:VARCHAR} , #{receiverName:VARCHAR}, 
+		VALUES	 (	seq_transaction_tran_no.nextval , #{purchaseProd.prodNo} , #{buyer.userId} , #{paymentOption:VARCHAR} , #{receiverName:VARCHAR}, 
 						#{receiverPhone:VARCHAR}, #{divyAddr:VARCHAR}, #{divyRequest:VARCHAR}, '1', SYSDATE, #{divyDate:DATE})
 
 	 </insert>
