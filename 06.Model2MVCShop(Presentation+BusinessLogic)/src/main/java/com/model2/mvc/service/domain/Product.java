@@ -2,6 +2,8 @@ package com.model2.mvc.service.domain;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 
 public class Product {
 	
@@ -13,9 +15,9 @@ public class Product {
 	private String fileName;
 	private Date regDate;
 	private String proTranCode;
+	private MultipartFile uploadfile;
 	
-	public Product(){
-	}
+	
 	
 	public String getProTranCode() {
 		return proTranCode;
@@ -65,11 +67,19 @@ public class Product {
 	public void setRegDate(Date regDate) {
 		this.regDate = regDate;
 	}
-
-	// Override
+	
+	public MultipartFile getUploadfile() {
+		return uploadfile;
+	}
+	public void setUploadfile(MultipartFile uploadfile) {
+		this.uploadfile = uploadfile;
+	}
+	@Override
 	public String toString() {
-		return "ProductVO : [fileName]" + fileName
-				+ "[manuDate]" + manuDate+ "[price]" + price + "[prodDetail]" + prodDetail
-				+ "[prodName]" + prodName + "[prodNo]" + prodNo +"[proTranCode]"+proTranCode;
+		return "Product [prodNo=" + prodNo + ", prodName=" + prodName + ", prodDetail=" + prodDetail + ", manuDate="
+				+ manuDate + ", price=" + price + ", fileName=" + fileName + ", regDate=" + regDate + ", proTranCode="
+				+ proTranCode + ", uploadfile=" + uploadfile + "]";
 	}	
+	
+	
 }

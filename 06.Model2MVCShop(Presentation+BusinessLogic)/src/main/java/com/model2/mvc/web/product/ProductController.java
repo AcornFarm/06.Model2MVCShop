@@ -1,5 +1,8 @@
 package com.model2.mvc.web.product;
 
+import java.io.File;
+import java.io.IOError;
+import java.io.IOException;
 import java.util.Map;
 
 import javax.servlet.http.Cookie;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
@@ -63,6 +67,22 @@ public class ProductController {
 		System.out.println("/addProduct.do");
 		//Business Logic
 		productService.addProduct(product);
+		
+		MultipartFile uploadFile = product.getUploadfile();
+		if(uploadFile !=null){
+			String fileName = uploadFile.getOriginalFilename();
+			product.setFileName(fileName);
+			
+			try {
+				
+				File file = new File("C:/Users/user/git/06.Model2MVCShop/06.Model2MVCShop(Presentation+BusinessLogic)/WebContent/images/uploadFiles/"+fileName);
+				uploadFile.transferTo(file);
+				
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 		model.addAttribute("pvo", product);
 		
 		return "forward:/product/addProduct.jsp";
