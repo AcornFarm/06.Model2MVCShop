@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import com.model2.mvc.common.Page;
 import com.model2.mvc.common.Search;
@@ -62,27 +64,26 @@ public class ProductController {
 	}
 	
 	@RequestMapping("/addProduct.do")
-	public String addProduct( @ModelAttribute("product") Product product, Model model ) throws Exception {
+	public String addProduct( @ModelAttribute("product") Product product, Model model, MultipartHttpServletRequest request) throws Exception {
 
 		System.out.println("/addProduct.do");
 		//Business Logic
+		
+		
+		Map<String, MultipartFile> files = request.getFileMap();
+		CommonsMultipartFile cmf  = (CommonsMultipartFile) files.get("uploadFile");
+		
+		String path = "C:\\Users\\user\\git\\06.Model2MVCShop\\06.Model2MVCShop(Presentation+BusinessLogic)\\WebContent\\images\\uploadFiles\\"
+		+cmf.getOriginalFilename();
+		
+		File f = new File(path);
+		
+		cmf.transferTo(f);
+		
+		product.setFileName(cmf.getOriginalFilename());
+		
+		System.out.println("실제로 들어가는 product:::"+product);
 		productService.addProduct(product);
-		
-		MultipartFile uploadFile = product.getUploadfile();
-		if(uploadFile !=null){
-			String fileName = uploadFile.getOriginalFilename();
-			product.setFileName(fileName);
-			
-			try {
-				
-				File file = new File("C:/Users/user/git/06.Model2MVCShop/06.Model2MVCShop(Presentation+BusinessLogic)/WebContent/images/uploadFiles/"+fileName);
-				uploadFile.transferTo(file);
-				
-			}catch(IOException e) {
-				e.printStackTrace();
-			}
-		}
-		
 		model.addAttribute("pvo", product);
 		
 		return "forward:/product/addProduct.jsp";

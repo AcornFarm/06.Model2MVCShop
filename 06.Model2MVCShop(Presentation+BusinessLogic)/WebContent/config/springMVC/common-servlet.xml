@@ -33,11 +33,12 @@
 
 	<!--  :: ViewResolver 선언 -->	
     <bean id="viewResolver"
-				class="org.springframework.web.servlet.view.InternalResourceViewResolver" />
+				class="org.springframework.web.servlet.view.InternalResourceViewResolver" />		
 				
-	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize" value="10485760"/>
+	</bean>
 	
-
 	<!-- 	:: exception resolver  선언 :: 서술적 / 선언적 예외처리 
 			:: Servlet 에서의 선언적 예외처리를 다시 생각하며....  -->
 	<bean id="exceptionResolver"
